@@ -1,78 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Interface</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarya Web Interface</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
+    
 <body class="bg-gray-100 h-screen flex flex-col">
-    <div class="flex-grow flex items-center justify-center p-4">
-        <div class="w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-            <div id="responseArea" class="flex-grow overflow-y-scroll p-4 space-y-4">
-                <!-- Chat bubbles will go here -->
-            </div>
-            <div class="p-4 bg-gray-50">
-                <div class="flex space-x-2">
-                    <input type="text" id="userInput" placeholder="Type your message here..." class="form-input px-4 py-2 w-full border flex-grow rounded-md focus:ring-blue-500 focus:border-blue-500" />
-                    <button id="sendButton" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none">Send</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="flex-grow flex items-center justify-center p-4">
+<div class="w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
+<div id="responseArea" class="flex-grow overflow-y-scroll p-4 space-y-4">
+<!-- Chat bubbles will go here -->
+</div>
+<div class="p-4 bg-gray-50">
+<div class="flex space-x-2">
+<input type="text" id="userInput" placeholder="Type your message here..." class="form-input px-4 py-2 w-full border flex-grow rounded-md focus:ring-blue-500 focus:border-blue-500" />
+<button id="sendButton" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none">Send</button>
+</div>
+</div>
+</div>
+</div>
 
-    <script type="text/javascript">
-    // Global memory for the chat history
-    var memory = [];
+<script type="text/javascript">
+// Global memory for the chat history
+var memory=[];
+document.getElementById('sendButton').addEventListener('click', sendMessage);
 
-    document.getElementById('sendButton').addEventListener('click', sendMessage);
+function sendMessage(){var userText = document.getElementById('userInput').value;if(!userText.trim()) return; // Don't send empty messages
+// Update UI immediately to show the message being sent
+addToChat(userText,'You');
+var requestData={"dir":"req","body":[{"type":"text","text":userText}],"hist":memory,"id":"","pid":""};
 
-    function sendMessage() {
-        var userText = document.getElementById('userInput').value;
-        if (!userText.trim()) return; // Don't send empty messages
+fetch('https://corsproxy.io/?https://saryaai.onrender.com/', {
+method:'POST',headers:{"Accept":"application/json","Content-Type":"application/json","x-version":"2023-06","x-language":"en"},
+body:JSON.stringify(requestData),})
+.then(response=>response.json())
+.then(response=>{response.body.forEach(function(entry){addToChat(entry.text,'Other');
+});
+memory=response.hist;document.getElementById('userInput').value = ''; // Clear the input after sending
+})
+.catch(error=>{addToChat("Error occurred.",'Error');
+});
+}
 
-        // Update UI immediately to show the message being sent
-        addToChat(userText, 'You');
+function addToChat(message,speaker){let chatBubble=document.createElement('div');
+chatBubble.innerHTML=
+`<div class="${speaker==='You'?'text-right':'text-left'}">
+<span class="inline-block bg-gray-200 rounded-full px-4 py-2 shadow text-sm">${message}</span>
+</div>`;
+document.getElementById('responseArea').appendChild(chatBubble);}
 
-        var requestData = {
-            "dir": "req",
-            "body": [{"type": "text", "text": userText}],
-            "hist": memory,
-            "id": "",
-            "pid": ""
-        };
-
-        fetch('https://corsproxy.io/?https://saryaai.onrender.com/', {
-            method: 'POST',
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "x-version": "2023-06",
-                "x-language": "en"
-            },
-            body: JSON.stringify(requestData),
-        })
-        .then(response => response.json())
-        .then(response => {
-            response.body.forEach(function(entry) {
-                addToChat(entry.text, 'Other');
-            });
-            memory = response.hist;
-            document.getElementById('userInput').value = ''; // Clear the input after sending
-        })
-        .catch(error => {
-            addToChat("Error occurred.", 'Error');
-        });
-    }
-
-    function addToChat(message, speaker) {
-        let chatBubble = document.createElement('div');
-        chatBubble.innerHTML = `<div class="${speaker === 'You' ? 'text-right' : 'text-left'}">
-                                    <span class="inline-block bg-gray-200 rounded-full px-4 py-2 shadow text-sm">${message}</span>
-                                </div>`;
-        document.getElementById('responseArea').appendChild(chatBubble);
-    }
-    </script>
+</script>
 </body>
 </html>
