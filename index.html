@@ -12,7 +12,8 @@
 <div class="w-full max-w-md bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col">
 
   
-<div id="responseArea" class="flex-grow overflow-y-scroll p-4 space-y-4"><!-- Chat bubbles will go here -->
+<div id="responseArea" class="flex-grow overflow-y-scroll p-4 space-y-4">
+<!-- Chat bubbles will go here -->
 </div>
   
 <div class="p-4 bg-gray-50">
@@ -23,26 +24,28 @@
 <button id="sendButton" class="px-4 py-2 bg-purple-700 text-white rounded-md hover:bg-purple-500 focus:outline-none">⚡️</button>
 </div>
 
-
 </div></div></div>
 
+  
 <script type="text/javascript">
 // Global memory for the chat history
-var memory=[];
+var memory={};
 document.getElementById('sendButton').addEventListener('click', sendMessage);
 
 function sendMessage(){var userText = document.getElementById('userInput').value;if(!userText.trim()) return; // Don't send empty messages
 // Update UI immediately to show the message being sent
 addToChat(userText,'You');
-var requestData={"dir":"req","body":[{"type":"text","text":userText}],"hist":memory,"id":"","pid":""};
+var requestData={"dir":"req","body":[{"type":"Text","content":userText}],"meta":memory};
 
-fetch('https://corsproxy.io/?https://saryaai.onrender.com/', {
+//fetch('https://corsproxy.io/?https://saryaai.onrender.com/', {
+fetch('https://corsproxy.io/?https://saryahai.ikhalid-alrashe.repl.co/', {
+
 method:'POST',headers:{"Accept":"application/json","Content-Type":"application/json","x-version":"2023-06","x-language":"en"},
 body:JSON.stringify(requestData),})
 .then(response=>response.json())
-.then(response=>{response.body.forEach(function(entry){addToChat(entry.text,'Other');
+.then(response=>{response.body.forEach(function(entry){addToChat(entry.content,'Other');
 });
-memory=response.hist;document.getElementById('userInput').value = ''; // Clear the input after sending
+memory=response.meta;document.getElementById('userInput').value = ''; // Clear the input after sending
 })
 .catch(error=>{addToChat("Error occurred.",'Error');
 });
@@ -55,6 +58,4 @@ chatBubble.innerHTML=
 </div>`;
 document.getElementById('responseArea').appendChild(chatBubble);}
 
-</script>
-</body>
-</html>
+</script></body></html>
