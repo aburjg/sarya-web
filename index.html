@@ -9,23 +9,30 @@
 
 <body class="h-screen flex flex-col">
 <!-- items-center -->
-<div class="flex-grow flex justify-center p-4">
-<div class="w-full max-w-md bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col">
-
+<div class="flex flex-grow justify-center p-4">
+<div class="flex w-full max-w-md flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
   
-<div id="responseArea" class="flex-grow overflow-y-scroll p-4 space-y-4">
+
+<div class="flex items-center p-4">
+<img class="absolute h-12 w-12 rounded-full ring-1 ring-pink-200" 
+src="https://github.com/mj-cycls/Sarya-web/assets/58256600/f9e9adeb-e855-4b8b-90d5-e0c7e346d247" alt="">
+
+<div class="flex-1 text-center">
+<div class="text-lg text-purple-800 font-medium">Superchat</div>
+<div class="font-normal text-orange-400">@home</div>
+</div>
+</div>
+
+
+<div id="responseArea" class="flex-grow space-y-4 overflow-y-scroll p-4">
 <!-- Chat bubbles will go here -->
 </div>
-  
+
 <div class="p-4">
-  
-
 <div class="flex space-x-2">
-<input type="text" id="userInput" placeholder="Talk to Sarya..." class="form-input px-4 py-2 w-full border flex-grow rounded-md focus:ring-purple-500 focus:border-purple-500"/>
-<button id="sendButton" class="px-4 py-2 bg-purple-700 text-white rounded-md hover:bg-purple-500 focus:outline-none">⚡️</button>
-</div>
-
-</div></div></div>
+<input type="text" id="userInput" placeholder="Text" class="form-input w-full flex-grow rounded-xl border px-4 py-2 focus:border-purple-500 focus:ring-purple-500" />
+<button id="sendButton" class="rounded-xl bg-purple-700 px-4 py-2 text-white hover:bg-purple-500 focus:outline-none">⚡️</button>
+</div></div></div></div></div>
 
   
 <script type="text/javascript">
