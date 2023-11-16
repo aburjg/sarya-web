@@ -11,7 +11,6 @@
 <!-- items-center -->
 <div class="flex flex-grow justify-center p-4">
 <div class="flex w-full max-w-md flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
-  
 
 <div class="flex items-center p-4">
 <img class="absolute h-12 w-12 rounded-full ring-1 ring-pink-200" 
@@ -34,8 +33,21 @@ src="https://github.com/mj-cycls/Sarya-web/assets/58256600/f9e9adeb-e855-4b8b-90
 <button id="sendButton" class="rounded-xl bg-purple-700 px-4 py-2 text-white hover:bg-purple-500 focus:outline-none">⚡️</button>
 </div></div></div></div></div>
 
-  
+
 <script type="text/javascript">
+function getQueryParam(param) {
+var searchParams = new URLSearchParams(window.location.search);
+return searchParams.get(param);
+}
+
+// Set the default text in the input field
+window.onload = function() {
+var defaultText = getQueryParam('text');
+if(defaultText) {
+    document.getElementById('userInput').value = defaultText;
+}
+};
+  
 // Global memory for the chat history
 var memory={};
 document.getElementById('sendButton').addEventListener('click', sendMessage);
@@ -45,13 +57,12 @@ function sendMessage(){var userText = document.getElementById('userInput').value
 addToChat(userText,'You');
 var requestData={"dir":"req","body":[{"type":"Text","content":userText}],"meta":memory};
 
-//fetch('https://corsproxy.io/?https://saryaai.onrender.com/', {
 fetch('https://corsproxy.io/?https://saryahai.ikhalid-alrashe.repl.co/', {
 
 method:'POST',headers:{"Accept":"application/json","Content-Type":"application/json","x-version":"2023-06","x-language":"en"},
 body:JSON.stringify(requestData),})
 .then(response=>response.json())
-.then(response=>{response.body.forEach(function(entry){addToChat(entry.content,'Other');
+.then(response=>{response.body.forEach(function(entry){addToChat(entry.content,'Other',entry.type);
 });
 memory=response.meta;document.getElementById('userInput').value = ''; // Clear the input after sending
 })
@@ -59,11 +70,23 @@ memory=response.meta;document.getElementById('userInput').value = ''; // Clear t
 });
 }
 
-function addToChat(message,speaker){let chatBubble=document.createElement('div');
+function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');
+if(type==="text"){
 chatBubble.innerHTML=
-`<div class="${speaker==='You'?'text-right':'text-left'}">
-<span class="inline-block bg-gray-100 rounded-full px-4 py-2  text-sm">${message}</span>
-</div>`;
+`
+<div class="${speaker==='You'?'text-right':'text-left'}">
+<span class="inline-block bg-gray-100 rounded-3xl px-4 py-2 text-sm">${message}</span>
+</div>
+`;}
+else if(type==="Image"){
+chatBubble.innerHTML=
+`
+<div class="${speaker==='You'?'text-right':'text-left'}">
+<span class="inline-block bg-gray-100 rounded-3xl px-4 py-2 text-sm">
+<img class="rounded-xl" src="${message}" alt="">
+</span>
+</div>
+`;}
 document.getElementById('responseArea').appendChild(chatBubble);}
 
 </script></body></html>
