@@ -57,7 +57,7 @@ function sendMessage(){var userText = document.getElementById('userInput').value
 addToChat(userText,'You');
 var requestData={"dir":"req","body":[{"type":"Text","content":userText}],"meta":memory};
 
-fetch('https://corsproxy.io/?https://saryahai.ikhalid-alrashe.repl.co/', {
+fetch('https://corsproxy.io/?https://api.sarya.com/', {
 
 method:'POST',headers:{"Accept":"application/json","Content-Type":"application/json","x-version":"2023-06","x-language":"en"},
 body:JSON.stringify(requestData),})
@@ -78,7 +78,7 @@ chatBubble.innerHTML=
 <span class="inline-block bg-gray-100 rounded-3xl px-4 py-2 text-sm">${message}</span>
 </div>
 `;}
-else if(type==="Image"){
+else if(type==="image"){
 chatBubble.innerHTML=
 `
 <div class="${speaker==='You'?'text-right':'text-left'}">
