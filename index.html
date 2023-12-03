@@ -35,26 +35,7 @@
           <p class="opacity-0">.</p>
           <p class="opacity-0">.</p>
 
-          <div class="flex items-start p-1 pl-4 opacity-30">
-            <div class="p-2">
-              <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
-            </div>
-            <div class="px- rounded-2xl border border-gray-200 p-2">
-              <p>Hi Sarya!</p>
-              <p>Can you help me with something?</p>
-              <p>Thanks 🙌</p>
-            </div>
-          </div>
 
-          <div class="flex items-start p-1 pl-4 opacity-30">
-            <div class="p-2">
-              <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
-            </div>
-            <div class="rounded-2xl border border-gray-200 p-2 px-4">
-              <p>What's up? How can I help?</p>
-              <p class="pt-2 text-right text-xs text-gray-400">@sarya ✓</p>
-            </div>
-          </div>
 
           <div id="responseArea"></div>
 
@@ -82,7 +63,16 @@ if(defaultText) {document.getElementById('userInput').value = defaultText}}
 
 // Global memory for the chat history
 var memory={};
-document.getElementById('sendButton').addEventListener('click', sendMessage);
+document.getElementById('sendButton').addEventListener('click',sendMessage);
+
+// Eneter
+var textarea = document.getElementById('userInput');
+textarea.addEventListener('keypress',function(e){
+if(e.key==='Enter'){e.preventDefault();sendMessage()}})
+// auto focus
+document.addEventListener('DOMContentLoaded',function(){document.getElementById('userInput').focus()})
+//
+
 
 function sendMessage(){var userText = document.getElementById('userInput').value;if(!userText.trim()) return; // Don't send empty messages
 // Update UI immediately to show the message being sent
@@ -98,37 +88,43 @@ body:JSON.stringify(requestData),})
 .then(response=>{response.body.forEach(function(entry){addToChat(entry.content,'Other',entry.type);
 });
 memory=response.meta;
-// document.getElementById('userInput').value = '';
 })
 .catch(error=>{addToChat("Error occurred.",'Error');
 });
 }
 
-function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');                                              
-if(type==="text"){
+function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');
+var render=''
+if(type==="text"){render=`<span>${message}<span>`}
+else if(type==="image"){render=`<img class="image-roll w-96 rounded-lg" src="${message}"/>`}
+else{render=`<span>sorry, couldn't show<span>`}
+
 chatBubble.innerHTML=
-`<div class="flex items-start md:w-6/12 p-1 pl-4">
+`<div class="flex items-start md:w-8/12 p-1 pl-4">
   <div class="p-2">
   ${speaker==='You'?
      '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>':
      '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>'}
   </div>
   <div class="px- rounded-2xl border border-gray-200 p-2">
-    <span>${message}<span>
+    ${render}
     <p class="pt-2 text-right text-xs text-gray-400">${speaker==='You'? '@you' : '@marid-name ✓'}</p>
   </div>
-</div>`;}
-  
-else if(type==="image"){
-chatBubble.innerHTML=
-`<div class="${speaker==='You'?'text-right':'text-left'}">
-<span class="inline-block bg-gray-100 rounded-3xl px-4 py-2 text-sm">
-<img class="rounded-xl" src="${message}" alt="">
-</span>
-</div>`;}
+</div>`;
+
 document.getElementById('responseArea').appendChild(chatBubble);
+// regular-roll
 var elementToScrollTo = document.getElementById('roll')
 elementToScrollTo.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'})
+// image-roll
+var images = document.querySelectorAll('.image-roll');                             
+images.forEach(function(image) {
+    image.addEventListener('load', function() {
+      elementToScrollTo.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'})
+    })
+})
+// NEXT, small vdom
+                                                
 }
 </script>
 </body>
