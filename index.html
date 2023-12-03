@@ -9,7 +9,7 @@
   <body>
     <div class="flex justify-center bg-gray-50">
       <div class="h-screen w-full overflow-y-auto md:w-8/12">
-        
+
         <div class="fixed flex w-full items-center justify-start px-6 py-3 backdrop-blur-xl md:w-8/12">
           <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white">
             <img class="h-8" src="https://mj-cycls.github.io/sarya-web/img/logo.svg" />
@@ -95,6 +95,8 @@ memory=response.meta;
 });
 }
 
+function timestamp(){var now=new Date();return now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}
+
 function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');
 var render=''
 if(type==="text"){render=`<span>${message}<span>`}
@@ -110,7 +112,7 @@ chatBubble.innerHTML=
   </div>
   <div class="rounded-2xl border border-gray-200 p-2">
     ${render}
-    <p class="pt-2 text-right text-xs text-gray-400">${speaker==='You'? '@you' : '@marid-name ✓'}</p>
+    <p class="pt-2 text-right text-xs text-gray-400">${speaker==='You'? '@you '+timestamp()+' ' : '@marid-name '+timestamp()+' ✓'}</p>
   </div>
 </div>`;
 
