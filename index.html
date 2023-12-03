@@ -1,37 +1,72 @@
-<!DOCTYPE html><html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sarya</title>
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Sarya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex justify-center bg-gray-50">
+      <div class="h-screen w-full overflow-y-auto md:w-8/12">
+        <div class="fixed flex w-full items-center justify-start px-6 py-3 backdrop-blur-xl md:w-8/12">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white">
+            <img class="h-8" src="https://mj-cycls.github.io/docusaurus/img/logo.svg" />
+          </div>
 
-<body class="h-screen flex flex-col">
-<!-- items-center -->
-<div class="flex flex-grow justify-center p-4">
-<div class="flex w-full max-w-md flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
+          <p class="opacity-0">.</p>
+          <p class="opacity-0">.</p>
+          <p class="opacity-0">.</p>
+          <p class="text-xl tracking-wider text-gray-700">Sarya</p>
+        </div>
 
-<div class="flex items-center p-4">
-<img class="absolute h-12 w-12 rounded-full ring-1 ring-pink-200" 
-src="https://github.com/mj-cycls/Sarya-web/assets/58256600/f9e9adeb-e855-4b8b-90d5-e0c7e346d247" alt="">
+        <div class="fixed bottom-0 z-10 flex w-full justify-center pb-8 md:w-8/12">
+          <div class="relative flex w-11/12 items-center justify-center md:w-9/12">
+            <textarea id="userInput" placeholder="Send a message" class="w-full resize-none rounded-full border border-gray-200 bg-transparent p-4 backdrop-blur-sm" rows="1" cols="50"></textarea>
+            <button id="sendButton" class="absolute inset-y-0 right-0 px-5 text-gray-400">Send</button>
+          </div>
+        </div>
 
-<div class="flex-1 text-center">
-<div class="text-lg text-purple-800 font-medium">Superchat</div>
-<div class="font-normal text-orange-400">@home</div>
-</div>
-</div>
+        <div class="">
+          <div class="h-5 bg-gradient-to-r from-pink-200 via-red-300 to-purple-300"></div>
+
+          <p class="opacity-0">.</p>
+          <p class="opacity-0">.</p>
+          <p class="opacity-0">.</p>
+          <p class="opacity-0">.</p>
+
+          <div class="flex items-start p-1 pl-4 opacity-30">
+            <div class="p-2">
+              <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
+            </div>
+            <div class="px- rounded-2xl border border-gray-200 p-2">
+              <p>Hi Sarya!</p>
+              <p>Can you help me with something?</p>
+              <p>Thanks 🙌</p>
+            </div>
+          </div>
+
+          <div class="flex items-start p-1 pl-4 opacity-30">
+            <div class="p-2">
+              <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
+            </div>
+            <div class="rounded-2xl border border-gray-200 p-2 px-4">
+              <p>What's up? How can I help?</p>
+              <p class="pt-2 text-right text-xs text-gray-400">@sarya ✓</p>
+            </div>
+          </div>
+
+          <div id="responseArea"></div>
 
 
-<div id="responseArea" class="flex-grow space-y-4 overflow-y-scroll p-4">
-<!-- Chat bubbles will go here -->
-</div>
-
-<div class="p-4">
-<div class="flex space-x-2">
-<input type="text" id="userInput" placeholder="Text" class="form-input w-full flex-grow rounded-xl border px-4 py-2 focus:border-purple-500 focus:ring-purple-500" />
-<button id="sendButton" class="rounded-xl bg-purple-700 px-4 py-2 text-white hover:bg-purple-500 focus:outline-none">⚡️</button>
-</div></div></div></div></div>
+          <p class="opacity-0">.</p>
+          <p class="opacity-0">.</p>
+          <p class="opacity-0">.</p>
+          <p class="opacity-0">.</p>
+          <p id="roll" class="opacity-0">.</p>
+        </div>
+      </div>
+    </div>
 
 
 <script type="text/javascript">
@@ -43,11 +78,8 @@ return searchParams.get(param);
 // Set the default text in the input field
 window.onload = function() {
 var defaultText = getQueryParam('text');
-if(defaultText) {
-    document.getElementById('userInput').value = defaultText;
-}
-};
-  
+if(defaultText) {document.getElementById('userInput').value = defaultText}}
+
 // Global memory for the chat history
 var memory={};
 document.getElementById('sendButton').addEventListener('click', sendMessage);
@@ -56,7 +88,8 @@ function sendMessage(){var userText = document.getElementById('userInput').value
 // Update UI immediately to show the message being sent
 addToChat(userText,'You');
 var requestData={"dir":"req","body":[{"type":"Text","content":userText}],"meta":memory};
-
+document.getElementById('userInput').value = '';
+                       
 fetch('https://corsproxy.io/?https://api.sarya.com/', {
 
 method:'POST',headers:{"Accept":"application/json","Content-Type":"application/json","x-version":"2023-06","x-language":"en"},
@@ -64,29 +97,39 @@ body:JSON.stringify(requestData),})
 .then(response=>response.json())
 .then(response=>{response.body.forEach(function(entry){addToChat(entry.content,'Other',entry.type);
 });
-memory=response.meta;document.getElementById('userInput').value = ''; // Clear the input after sending
+memory=response.meta;
+// document.getElementById('userInput').value = '';
 })
 .catch(error=>{addToChat("Error occurred.",'Error');
 });
 }
 
-function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');
+function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');                                              
 if(type==="text"){
 chatBubble.innerHTML=
-`
-<div class="${speaker==='You'?'text-right':'text-left'}">
-<span class="inline-block bg-gray-100 rounded-3xl px-4 py-2 text-sm">${message}</span>
-</div>
-`;}
+`<div class="flex items-start md:w-6/12 p-1 pl-4">
+  <div class="p-2">
+  ${speaker==='You'?
+     '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>':
+     '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>'}
+  </div>
+  <div class="px- rounded-2xl border border-gray-200 p-2">
+    <span>${message}<span>
+    <p class="pt-2 text-right text-xs text-gray-400">${speaker==='You'? '@you' : '@marid-name ✓'}</p>
+  </div>
+</div>`;}
+  
 else if(type==="image"){
 chatBubble.innerHTML=
-`
-<div class="${speaker==='You'?'text-right':'text-left'}">
+`<div class="${speaker==='You'?'text-right':'text-left'}">
 <span class="inline-block bg-gray-100 rounded-3xl px-4 py-2 text-sm">
 <img class="rounded-xl" src="${message}" alt="">
 </span>
-</div>
-`;}
-document.getElementById('responseArea').appendChild(chatBubble);}
-
-</script></body></html>
+</div>`;}
+document.getElementById('responseArea').appendChild(chatBubble);
+var elementToScrollTo = document.getElementById('roll')
+elementToScrollTo.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'})
+}
+</script>
+</body>
+</html>
