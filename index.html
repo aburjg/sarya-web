@@ -79,7 +79,7 @@ function sendMessage(){var userText = document.getElementById('userInput').value
 addToChat(userText,'You');
 var requestData={"dir":"req","body":[{"type":"Text","content":userText}],"meta":memory};
 document.getElementById('userInput').value = '';
-                       
+
 fetch('https://corsproxy.io/?https://api.sarya.com/', {
 
 method:'POST',headers:{"Accept":"application/json","Content-Type":"application/json","x-version":"2023-06","x-language":"en"},
@@ -96,7 +96,7 @@ memory=response.meta;
 function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');
 var render=''
 if(type==="text"){render=`<span>${message}<span>`}
-else if(type==="image"){render=`<img class="image-roll w-96 rounded-lg" src="${message}"/>`}
+else if(type==="image"){render=`<img class="image-roll w-auto max-w-md rounded-lg" src="${message}"/>`}
 else{render=`<span>sorry, couldn't show<span>`}
 
 chatBubble.innerHTML=
@@ -106,7 +106,7 @@ chatBubble.innerHTML=
      '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>':
      '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>'}
   </div>
-  <div class="px- rounded-2xl border border-gray-200 p-2">
+  <div class="rounded-2xl border border-gray-200 p-2">
     ${render}
     <p class="pt-2 text-right text-xs text-gray-400">${speaker==='You'? '@you' : '@marid-name ✓'}</p>
   </div>
@@ -124,7 +124,7 @@ images.forEach(function(image) {
     })
 })
 // NEXT, small vdom
-                                                
+
 }
 </script>
 </body>
