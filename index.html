@@ -95,7 +95,7 @@ memory=response.meta;
 });
 }
 
-function timestamp(){var now=new Date();return now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}
+function timestamp(){var now=new Date();return now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}
 
 function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');
 var render=''
