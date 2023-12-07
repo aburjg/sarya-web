@@ -5,7 +5,7 @@
 <body>
 
 <div>
-<button py-click="run">EVAL()</button>
+<button py-click="run()">EVAL()</button>
 <textarea id="input"></textarea>
 <pre id="output"></pre>
 </div>
@@ -18,7 +18,7 @@
 from pyscript import display
 from js import document
 
-def run(x):
+def run():
  a = document.getElementById('input').value
  print(a)
  b = document.getElementById('output')
