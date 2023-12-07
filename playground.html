@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<button py-click="translate_english">EVAL()</button>
+<button py-click="run">EVAL()</button>
 <div id="msg">???</div>
   
 <script>
@@ -26,7 +26,7 @@ from js import document
 msg = document.getElementById("msg")
 msg.innerHTML = 'Hello world'
 
-def runPython():
+def run():
     msg.innerHTML = 'Hello world'
 
 </script>
