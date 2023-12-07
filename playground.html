@@ -32,11 +32,13 @@ try{let result=x.runPython(input.value);output.value=result}
 catch(err){output.value=err}}
 document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
 </script>
-
-<script>
   
+<script>
 var out=document.getElementById('out');
 (function(){console.log=function(x){out.innerHTML+=x+'\n';out.scrollTop=out.scrollHeight}})()
+  
+document.addEventListener('keydown',function(event){
+if(event.metaKey && event.key==='k'){event.preventDefault();out.innerHTML=''}})
 </script>
 </body>
 </html>
