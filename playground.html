@@ -11,14 +11,18 @@
 </head>
 <body>
 
-<div class="flex h-screen bg-blue-200">
-<textarea id="input" class="flex-1 bg-gray-900 p-10 font-mono text-white" placeholder="[for i in range(10)]"></textarea>
-<textarea id="output" class="flex-1 bg-white p-10 font-mono"></textarea>
+<div class="flex h-screen">
+<textarea id="input" class="w-5/12 resize-none border-r bg-gray-50 bg-gray-900 p-10 font-mono text-white focus:outline-none" placeholder="[for i in range(10)]"></textarea>
+<div class="w-7/12 flex flex-col h-screen">
+<textarea id="output" class="h-3/4 resize-none bg-gray-50 p-10 font-mono focus:outline-none"></textarea>
+<textarea id="out" class="h-1/4 resize-none bg-gray-900 p-5 font-mono text-white focus:outline-none"></textarea>
+</div>
 </div>
 
 <script>
 const input  = document.getElementById("input");
 const output = document.getElementById("output");
+var out = document.getElementById('out');
 
 async function main(){let x =await loadPyodide();output.value="⚡️\n";return x}
 let pyth=main();
@@ -26,7 +30,12 @@ let pyth=main();
 async function eval(){let x=await pyth;
 try{let result=x.runPython(input.value);output.value=result} 
 catch(err){output.value=err}}
-document.getElementById('input').addEventListener('input', function() {var x=this.value;eval(x)})
+document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
+</script>
+
+<script>
+var out=document.getElementById('out');
+(function(){console.log=function(x){out.innerHTML+=x+'\n';out.scrollTop=out.scrollHeight}})()
 </script>
 </body>
 </html>
