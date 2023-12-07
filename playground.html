@@ -16,7 +16,7 @@ var x=["hi","bye"]
 from pyscript import display
 display("Hello World!") # this goes to the DOM
 print("Hello terminal") # this goes to the terminal
-eval('display("Hello World!")')
+# eval('display("Hello World!")')
 
 # https://jeff.glass/post/whats-new-pyscript-2023-03-1/
 from js import x
@@ -26,17 +26,15 @@ from js import document
 msg = document.getElementById("msg")
 msg.innerHTML = 'Hello world'
 
-</script>
-
-<py-script type="py">
-from pyscript import display
-from js import document 
 from pyodide import create_proxy
 def runPython():
-    display("you clicked me")
+    # display("you clicked me")
+    eval('display("Hello World!")')
 function_proxy = create_proxy(runPython)
 document.getElementById("button").addEventListener("click", function_proxy)
-  
+
 </script>
+
+
   
 </body>
