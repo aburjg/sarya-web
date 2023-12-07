@@ -1,34 +1,23 @@
-<!-- <html>
-  <head>
-    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
-    <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
-  </head>
-  <body>
-
- <py-script> 
-   from pyscript import display
-   print('Now you can!')
-   display("Hi O")
- </py-script>
-    
-  </body>
-</html>
- -->
-
 <head>
-    <link
-        rel="stylesheet"
-        href="https://pyscript.net/releases/2023.11.2/core.css"
-    />
-    <script
-        type="module"
-        src="https://pyscript.net/releases/2023.11.2/core.js"
-    ></script>
+<link rel="stylesheet" href="https://pyscript.net/releases/2023.11.2/core.css"/>
+<script type="module" src="https://pyscript.net/releases/2023.11.2/core.js"></script>
 </head>
 <body>
-    <script type="py">
-        from pyscript import display
-        display("Hello World!") # this goes to the DOM
-        print("Hello terminal") # this goes to the terminal
-    </script>
+
+<script>
+var x=["hi","bye"]
+</script>
+  
+<script type="py">
+  
+from pyscript import display
+display("Hello World!") # this goes to the DOM
+print("Hello terminal") # this goes to the terminal
+
+# https://jeff.glass/post/whats-new-pyscript-2023-03-1/
+from js import x
+display(x)
+
+
+</script>
 </body>
