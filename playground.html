@@ -15,57 +15,50 @@
 </html>
  -->
 
-<html>
-  <head>
-    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
-    <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
-    <style>
-      .container {
-        display: flex;
-      }
 
-      .editor, .output {
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin: 5px;
-      }
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-      textarea {
-        width: 100%;
-        height: 200px;
-      }
-    </style>
-  </head>
-  <body>
+        <title>REPL</title>
 
-    <div class="container">
-      <div class="editor">
-        <textarea id="pythonCode">print('Hello PyScript!')</textarea>
-        <button id="runButton">Run</button>
-      </div>
-      <div class="output">
-        <py-script output="outputArea"></py-script>
-      </div>
-    </div>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link
+            rel="stylesheet"
+            href="https://pyscript.net/latest/pyscript.css"
+        />
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+        <link rel="stylesheet" href="./assets/css/examples.css" />
+    </head>
 
-    <script type="module">
-      async function runCode() {
-        await loadPyodide({
-          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/"
-        });
-        const code = document.getElementById('pythonCode').value;
-        try {
-          const output = await pyodide.runPythonAsync(code);
-          document.querySelector('py-script[output="outputArea"]').textContent = output;
-        } catch (err) {
-          console.error(err);
-        }
-      }
-
-      document.getElementById('runButton').addEventListener('click', runCode);
-    </script>
-
-  </body>
+    <body>
+        <nav class="navbar" style="background-color: #000000">
+            <div class="app-header">
+                <a href="/">
+                    <img src="./logo.png" class="logo" />
+                </a>
+                <a class="title" href="" style="color: #f0ab3c"
+                    >PyScript REPL</a
+                >
+            </div>
+        </nav>
+        <section class="pyscript">
+            <h1><b>PyScript REPL</b></h1>
+            Tip: press Shift-ENTER to evaluate a cell
+            <br />
+            <py-tutor modules="antigravity.py">
+                <py-config>
+                    plugins = [
+                      "https://pyscript.net/latest/plugins/python/py_tutor.py"
+                    ]
+                </py-config>
+                <div style="margin-right: 3rem">
+                    <py-repl id="my-repl" auto-generate="true"> </py-repl>
+                </div>
+            </py-tutor>
+        </section>
+    </body>
 </html>
 
