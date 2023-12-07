@@ -3,7 +3,8 @@
 <script type="module" src="https://pyscript.net/releases/2023.11.2/core.js"></script>
 </head>
 <body>
-  
+
+<button type="button" id="button">run Python</button>
 <div id="msg">Loading page ...</div>
   
 <script>
@@ -26,4 +27,16 @@ msg = document.getElementById("msg")
 msg.innerHTML = 'Hello world'
 
 </script>
+
+<py-script type="py">
+from pyscript import display
+from js import document 
+from pyodide import create_proxy
+def runPython():
+    display("you clicked me")
+function_proxy = create_proxy(runPython)
+document.getElementById("button").addEventListener("click", function_proxy)
+  
+</script>
+  
 </body>
