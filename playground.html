@@ -42,7 +42,7 @@
     <div class="container">
       <div class="editor">
         <textarea id="pythonCode">print('Hello PyScript!')</textarea>
-        <button onclick="runCode()">Run</button>
+        <button id="runButton">Run</button>
       </div>
       <div class="output">
         <py-script output="outputArea"></py-script>
@@ -62,7 +62,10 @@
           console.error(err);
         }
       }
+
+      document.getElementById('runButton').addEventListener('click', runCode);
     </script>
 
   </body>
 </html>
+
