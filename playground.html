@@ -5,7 +5,7 @@
 <body>
 
 <button py-click="run">EVAL()</button>
-<textarea id="msg"></textarea>
+<textarea id="input"></textarea>
 <pre id="output"></pre>
   
 <script>
@@ -28,7 +28,7 @@ msg = document.getElementById("msg")
 # msg.innerHTML = 'Hello world'
 
 def run(x):
-    a = document.getElementById('msg').value
+    a = document.getElementById('input').value
     b = document.getElementById('output')
     b.innerHTML = eval(a)
     # msg.innerHTML = 'Hello world'
