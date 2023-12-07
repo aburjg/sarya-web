@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple JavaScript Editor</title>
+    <style>
+        #editor {
+            width: 500px;
+            height: 300px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple JavaScript Editor</h1>
+    <textarea id="editor">
+// Write your JavaScript code here
+    </textarea>
+    <button onclick="runCode()">Run</button>
+    <pre id="output"></pre>
+
+    <script>
+        function runCode() {
+            try {
+                const code = document.getElementById('editor').value;
+                const output = eval(code);
+                document.getElementById('output').innerText = output;
+            } catch (e) {
+                document.getElementById('output').innerText = 'Error: ' + e.message;
+            }
+        }
+    </script>
+</body>
+</html>
