@@ -14,22 +14,74 @@
 <div class="flex h-screen">
 <textarea id="input" class="w-5/12 resize-none border-r bg-gray-100 bg-gray-900 p-10 font-mono text-white focus:outline-none" placeholder="[for i in range(10)]"></textarea>
 <div class="w-7/12 flex flex-col h-screen">
-<textarea id="output" class="h-3/4 resize-none bg-gray-50 p-10 font-mono text-gray-500 focus:outline-none"></textarea>
+<!-- <textarea id="output" class="h-3/4 resize-none bg-gray-50 p-10 font-mono text-gray-500 focus:outline-none"></textarea> -->
+
+  
+<div class="h-3/4 bg-gray-50">
+<div class="fixed flex w-full items-center justify-start px-6 py-3 backdrop-blur-xl md:w-8/12">
+<div class=" flex h-14 w-14 items-center justify-center rounded-full bg-white">
+<img class="h-8" src="https://mj-cycls.github.io/sarya-web/img/logo.svg" />
+</div>
+<p class="opacity-0">.</p>
+<p class="opacity-0">.</p>
+<p class="opacity-0">.</p>
+<!-- <img class="h-5 opacity-0" src="https://mj-cycls.github.io/sarya-web/img/sarya.svg"></img> -->
+<p class="text-gray-700 text-xl tracking-wide">Playground</p>
+
+</div>
+<div class="h-5 bg-gradient-to-r from-pink-200 via-red-300 to-purple-300"></div>
+<p class="opacity-0">.</p>
+<p class="opacity-0">.</p>
+<p class="opacity-0">.</p>
+<p class="opacity-0">.</p>
+<div id="responseArea"></div>
+</div>
+
+  
 <textarea id="out" class="h-1/4 bg-gray-50 border-t bg-gray-100 font-mono text-gray-500 p-5 focus:outline-none resize-none"></textarea>
 </div>
 </div>
 
 <script>
+function timestamp(){var now=new Date();return now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}
+
+function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');
+var render=''
+if(type==="text"){render=`<span>${message}<span>`}
+else if(type==="image"){render=`<img class="image-roll w-auto max-w-md rounded-lg" src="${message}"/>`}
+else{render=`<span>sorry, couldn't show<span>`}
+
+chatBubble.innerHTML=
+`<div class="flex items-start md:w-8/12 p-1 pl-4">
+  <div class="p-2">
+  ${speaker==='You'?
+     '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>':
+     '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>'}
+  </div>
+  <div class="rounded-2xl border border-gray-200 p-2">
+    ${render}
+    <p class="pt-2 text-right text-xs text-gray-400">${speaker==='You'? '@you '+timestamp()+' ' : '@marid '+timestamp()+' ✓'}</p>
+  </div>
+</div>`;
+
+// document.getElementById('responseArea').appendChild(chatBubble);
+var area=document.getElementById('responseArea')
+area.innerHTML='';area.appendChild(chatBubble);
+}
+</script>
+
+<script>
 const input  = document.getElementById("input");
-const output = document.getElementById("output");
+// const output = document.getElementById("output");
 var out = document.getElementById('out');
 
-async function main(){let x =await loadPyodide();output.value="⚡️\n";return x}
+async function main(){let x =await loadPyodide();/*output.value="⚡️\n";*/return x}
 let pyth=main();
 
 async function eval(){let x=await pyth;
-try{let result=x.runPython(input.value);output.value=result} 
-catch(err){output.value=err}}
+try{let result=x.runPython(input.value);/*output.value=result*/addToChat(result,"You","text")
+   } 
+catch(err){/*output.value=err*/}}
 document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
 </script>
   
