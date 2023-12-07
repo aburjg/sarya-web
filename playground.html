@@ -1,35 +1,16 @@
 <html>
   <head>
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
   </head>
   <body>
-  <h1>Some places I have visited over the years:</h1>
-  <div id="folium"></div>
-    <py-config>
-packages = ["folium"]
-[[fetch]]
-from = "https://gist.githubusercontent.com/bbelderbos/37823bf81b85f2916f384afa27950a6d/raw/7d060275a0ce7ad60cef5a09555d529ce8d2cb08/"
-files = ["places.py"]
-[[fetch]]
-from = "https://raw.githubusercontent.com/pybites/100DaysOfCode/master/050/"
-files = ["simplemaps-worldcities-basic.csv"]
-    </py-config>
-    <py-script>
-import folium
 
-from places import get_cities_lon_and_lats
-
-city_coords = get_cities_lon_and_lats("simplemaps-worldcities-basic.csv")
-
-center_city = "Berlin"
-map = folium.Map(location=city_coords[center_city], zoom_start=4,
-                 tiles='Stamen Terrain')
-
-for city, coords in city_coords.items():
-    folium.Marker(coords, popup=city).add_to(map)
-
-display(map, target="folium")
-    </py-script>
+ <py-script> 
+   print('Now you can!')
+   import sys
+   from pyscript import display
+   display(sys.version)
+ </py-script>
+    
   </body>
 </html>
