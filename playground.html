@@ -92,6 +92,7 @@
         try {
           let result = pyodide.runPython(input.value);
           // addToOutput(output);
+           output.value = "vake";
            output.value = result;
         } catch (err) {
           // addToOutput(err);
