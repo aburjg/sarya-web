@@ -15,7 +15,7 @@
 </html>
  -->
 
- <html>
+<html>
   <head>
     <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
     <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
@@ -45,16 +45,22 @@
         <button onclick="runCode()">Run</button>
       </div>
       <div class="output">
-        <py-script output="output"></py-script>
+        <py-script output="outputArea"></py-script>
       </div>
     </div>
 
-    <script>
-      function runCode() {
+    <script type="module">
+      async function runCode() {
+        await loadPyodide({
+          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/"
+        });
         const code = document.getElementById('pythonCode').value;
-        pyodide.runPythonAsync(code)
-          .then(output => document.querySelector('py-script[output="output"]').textContent = output)
-          .catch(err => console.error(err));
+        try {
+          const output = await pyodide.runPythonAsync(code);
+          document.querySelector('py-script[output="outputArea"]').textContent = output;
+        } catch (err) {
+          console.error(err);
+        }
       }
     </script>
 
