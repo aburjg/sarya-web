@@ -12,11 +12,9 @@
 <body>
 
 <div class="flex h-screen">
-<textarea id="input" class="w-5/12 resize-none border-r bg-gray-100 bg-gray-900 p-10 font-mono text-white focus:outline-none" placeholder="[for i in range(10)]"></textarea>
-<div class="w-7/12 flex flex-col h-screen">
-<!-- <textarea id="output" class="h-3/4 resize-none bg-gray-50 p-10 font-mono text-gray-500 focus:outline-none"></textarea> -->
-
-  
+<textarea id="input" class="w-6/12 resize-none border-r bg-gray-100 bg-gray-900 p-10 font-mono text-purple-200 text-sm focus:outline-none" placeholder="[for i in range(10)]" wrap="off"
+autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+<div class="w-6/12 flex flex-col h-screen">  
 <div class="h-3/4 bg-gray-50">
 <div class="fixed flex w-full items-center justify-start px-6 py-3 backdrop-blur-xl md:w-8/12">
 <div class=" flex h-14 w-14 items-center justify-center rounded-full bg-white">
@@ -25,8 +23,10 @@
 <p class="opacity-0">.</p>
 <p class="opacity-0">.</p>
 <p class="opacity-0">.</p>
-<!-- <img class="h-5 opacity-0" src="https://mj-cycls.github.io/sarya-web/img/sarya.svg"></img> -->
-<p class="text-gray-700 text-xl tracking-wide">Playground</p>
+<img class="h-5" src="https://mj-cycls.github.io/sarya-web/img/sarya.svg"></img>
+<p class="opacity-0">.</p>
+<p class="opacity-0">.</p>
+<p class="text-gray-500 text-lg tracking-wide">/ Playground</p>
 
 </div>
 <div class="h-5 bg-gradient-to-r from-pink-200 via-red-300 to-purple-300"></div>
@@ -45,7 +45,8 @@
 <script>
 function timestamp(){var now=new Date();return now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}
 
-function addToChat(message,speaker,type="text"){let chatBubble=document.createElement('div');
+function addToChat(message,speaker,type="text"){
+let chatBubble=document.createElement('div');
 var render=''
 if(type==="text"){render=`<span>${message}<span>`}
 else if(type==="image"){render=`<img class="image-roll w-auto max-w-md rounded-lg" src="${message}"/>`}
@@ -64,10 +65,18 @@ chatBubble.innerHTML=
   </div>
 </div>`;
 
-// document.getElementById('responseArea').appendChild(chatBubble);
 var area=document.getElementById('responseArea')
 area.innerHTML='';area.appendChild(chatBubble);
 }
+
+function render(x){
+  JSON.parse(x).forEach((e)=>{
+    console.log(e)
+    addToChat(e.body[0].text,"You")
+    })
+  // addToChat(x,"You","text")
+}
+  
 </script>
 
 <script>
@@ -79,7 +88,9 @@ async function main(){let x =await loadPyodide();/*output.value="⚡️\n";*/ret
 let pyth=main();
 
 async function eval(){let x=await pyth;
-try{let result=x.runPython(input.value);/*output.value=result*/addToChat(result,"You","text")
+try{let result=x.runPython(input.value);/*output.value=result*/
+    // render(result)
+    addToChat(result,"You","text")
    } 
 catch(err){/*output.value=err*/}}
 document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
