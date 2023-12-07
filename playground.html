@@ -3,7 +3,9 @@
 <script type="module" src="https://pyscript.net/releases/2023.11.2/core.js"></script>
 </head>
 <body>
-
+  
+<div id="msg">Loading page ...</div>
+  
 <script>
 var x=["hi","bye"]
 </script>
@@ -19,6 +21,9 @@ eval('display("Hello World!")')
 from js import x
 display(x)
 
+from js import document
+msg = document.getElementById("msg")
+msg.innerHTML = 'Hello world'
 
 </script>
 </body>
