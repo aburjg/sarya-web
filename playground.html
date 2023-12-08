@@ -14,7 +14,7 @@
 <div class="flex h-screen">
 <textarea id="input" class="w-6/12 resize-none border-r bg-gray-100 bg-gray-900 p-10 font-mono text-purple-200 text-sm focus:outline-none" placeholder="main=json.dumps([{'dir':'req'}])" wrap="off"
 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-<div class="w-6/12 flex flex-col h-screen">  
+<div class="w-6/12 flex flex-col h-screen"> 
 <div class="h-3/4 bg-gray-50">
 <div class="fixed flex w-full items-center justify-start px-6 py-3 backdrop-blur-xl md:w-8/12">
 <div class=" flex h-14 w-14 items-center justify-center rounded-full bg-white">
@@ -36,15 +36,15 @@ autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></t
 <p class="opacity-0">.</p>
 <div id="responseArea"></div>
 </div>
-
-
+  
 <textarea id="out" class="h-1/4 bg-gray-50 border-t bg-gray-100 font-mono text-gray-500 p-5 focus:outline-none resize-none"></textarea>
+  
 </div>
 </div>
 
 <script>
 var area=document.getElementById('responseArea')
-  
+
 function timestamp(){var now=new Date();return now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}
 
 function addToChat(message,speaker,type="text"){
@@ -85,6 +85,7 @@ var out=document.getElementById('out');
 
 async function main(){let x =await loadPyodide();
                       await x.loadPackage('micropip'); 
+                      out.innerHTML="";
                       return x}
 let pyth=main();
 
@@ -93,23 +94,41 @@ try{
 area.innerHTML='';out.innerHTML=''
 let result=x.runPython(`
 import json
-main=json.dumps([])
+timeline=json.dumps([])
+
+import pprint
+
+def play(x,n=4):
+ global timeline;pprint.pprint(x,width=50,depth=n,sort_dicts=False)
+ a=json.dumps(x);timeline=a
+
+def Req(x):
+ if(len(x)>1):
+  return {"dir":"req","body":x}
+ return {"dir":"req","body":[x]}
+
+def Res(x):
+ if(len(x)>1):
+  return {"dir":"res","body":x}
+ return {"dir":"res","body":[x]}
+
+def Text(x):
+ return {"type":"text","text":x}
 
 ${input.value}
 
-main
+timeline
 `);
 R=JSON.parse(result)
 render(R)
 } 
 catch(err){out.innerHTML=err}}
-document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
-// let debounceTimer;
-// document.getElementById('input').addEventListener('input', function() {
-//     clearTimeout(debounceTimer);
-//     debounceTimer = setTimeout(() => eval(this.value), 600);
-// });
-
+  
+document.getElementById('input').addEventListener('input',function(){var x=this.value;
+if(!this.value.startsWith('#slow')){eval(this.value)}})
+  
+document.addEventListener('keydown', event => {
+if((event.metaKey || event.ctrlKey) && event.key === 'k'){eval()}})
 </script>
 
 <script>
