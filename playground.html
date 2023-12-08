@@ -43,6 +43,8 @@ autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></t
 </div>
 
 <script>
+var area=document.getElementById('responseArea')
+  
 function timestamp(){var now=new Date();return now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}
 
 function addToChat(message,speaker,type="text"){
@@ -65,8 +67,6 @@ chatBubble.innerHTML=
   </div>
 </div>`;
 
-var area=document.getElementById('responseArea')
-// area.innerHTML='';
 area.appendChild(chatBubble);
 }
 
@@ -79,19 +79,19 @@ if(x.dir==="res"){addToChat(JSON.stringify(x),"Other")}
 </script>
 
 <script>
-const input  = document.getElementById("input");
-// const output = document.getElementById("output");
-var out = document.getElementById('out');
+const input=document.getElementById("input");
+var area=document.getElementById('responseArea')
+var out=document.getElementById('out');
 
-async function main(){let x =await loadPyodide();/*output.value="⚡️\n";*/return x}
+async function main(){let x =await loadPyodide();return x}
 let pyth=main();
 
 async function eval(){let x=await pyth;
-try{let result=x.runPython(input.value);/*output.value=result*/
+try{
+    area.innerHTML='';;out.innerHTML=''
+    let result=x.runPython(input.value);
     R=JSON.parse(result)
     render(R)
-    // addToChat(JSON.stringify(R[0]),"You","text")
-
     
    } 
 catch(err){/*output.value=err*/}}
@@ -100,10 +100,7 @@ document.getElementById('input').addEventListener('input',function() {var x=this
 
 <script>
 var out=document.getElementById('out');
-(function(){console.log=function(x){out.innerHTML/*+=*/=x+'\n';out.scrollTop=out.scrollHeight}})()
-
-// document.addEventListener('keydown',function(event){
-// if(event.metaKey && event.key==='k'){event.preventDefault();out.innerHTML=''}})
+(function(){console.log=function(x){out.innerHTML+=x+'\n';out.scrollTop=out.scrollHeight}})()
 </script>
 </body>
 </html>
