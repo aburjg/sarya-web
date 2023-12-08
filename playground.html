@@ -107,7 +107,7 @@ catch(err){out.innerHTML=err}}
 let debounceTimer;
 document.getElementById('input').addEventListener('input', function() {
     clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => eval(this.value), 250);
+    debounceTimer = setTimeout(() => eval(this.value), 600);
 });
 
 </script>
