@@ -103,7 +103,9 @@ R=JSON.parse(result)
 render(R)
 } 
 catch(err){out.innerHTML=err}}
-document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
+// document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
+setInterval(function(){var x=document.getElementById('input').value;eval(x);},1000);
+
 </script>
 
 <script>
