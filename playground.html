@@ -103,12 +103,12 @@ R=JSON.parse(result)
 render(R)
 } 
 catch(err){out.innerHTML=err}}
-// document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
-let debounceTimer;
-document.getElementById('input').addEventListener('input', function() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => eval(this.value), 600);
-});
+document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
+// let debounceTimer;
+// document.getElementById('input').addEventListener('input', function() {
+//     clearTimeout(debounceTimer);
+//     debounceTimer = setTimeout(() => eval(this.value), 600);
+// });
 
 </script>
 
