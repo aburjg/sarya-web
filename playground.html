@@ -104,7 +104,11 @@ render(R)
 } 
 catch(err){out.innerHTML=err}}
 // document.getElementById('input').addEventListener('input',function() {var x=this.value;eval(x)})
-setInterval(function(){var x=document.getElementById('input').value;eval(x);},1000);
+let debounceTimer;
+document.getElementById('input').addEventListener('input', function() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => eval(this.value), 250);
+});
 
 </script>
 
