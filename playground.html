@@ -90,7 +90,6 @@ var area=document.getElementById('responseArea')
 var out=document.getElementById('out');
 
 var elementToScrollTo = document.getElementById('roll')
-var images = document.querySelectorAll('.image-roll');
 
 
 async function main(){let x =await loadPyodide();
@@ -138,6 +137,7 @@ render(R)
 //regular-roll
 elementToScrollTo.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'})
 // image-roll
+var images=document.querySelectorAll('.image-roll'); // has to be here not on top with the others???
 images.forEach(function(image) {
 image.addEventListener('load', function() {
 elementToScrollTo.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'})
