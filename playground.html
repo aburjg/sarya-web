@@ -47,23 +47,23 @@ var area=document.getElementById('responseArea')
 
 function timestamp(){var now=new Date();return now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}
 
-function addToChat(message,speaker,type="text"){
+function addToChat(x,type="text"){
 let chatBubble=document.createElement('div');
 var render=''
-if(type==="text"){render=`<span>${message}<span>`}
-else if(type==="image"){render=`<img class="image-roll w-auto max-w-md rounded-lg" src="${message}"/>`}
+if(x.body.type==="text"){render=`<span>${x.body.text}<span>`}
+else if(x.body.type==="image"){render=`<img class="image-roll w-auto max-w-md rounded-lg" src="${x.body.image}"/>`}
 else{render=`<span>sorry, couldn't show<span>`}
 
 chatBubble.innerHTML=
 `<div class="flex items-start md:w-8/12 p-1 pl-4">
   <div class="p-2">
-  ${speaker==='You'?
+  ${x.dir==='req'?
      '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>':
      '<div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>'}
   </div>
   <div class="rounded-2xl border border-gray-200 p-2">
     ${render}
-    <p class="pt-2 text-right text-xs text-gray-400">${speaker==='You'? '@you '+timestamp()+' ' : '@marid '+timestamp()+' ✓'}</p>
+    <p class="pt-2 text-right text-xs text-gray-400">${x.dir==='req'? '@you '+timestamp()+' ' : '@marid '+timestamp()+' ✓'}</p>
   </div>
 </div>`;
 
@@ -72,8 +72,8 @@ area.appendChild(chatBubble);
 
 function render(x){
 x.forEach((x)=>{
-if(x.dir==="req"){addToChat(JSON.stringify(x),"You")}
-if(x.dir==="res"){addToChat(JSON.stringify(x),"Other")}
+if(x.dir==="req"){addToChat(x)}
+if(x.dir==="res"){addToChat(x)}
 })}
 
 </script>
@@ -115,6 +115,9 @@ def Res(x):
 
 def Text(x):
  return {"type":"text","text":x}
+
+def Image(x):
+ return {"type":"image","image":x}
 
 ${input.value}
 
