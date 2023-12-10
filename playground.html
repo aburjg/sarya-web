@@ -92,7 +92,8 @@ let pyth=main();
 async function eval(){let x=await pyth;
 try{
 area.innerHTML='';out.innerHTML=''
-let result=x.runPython(`
+// let result=x.runPython(`
+let result=await x.runPythonAsync(`
 import json
 timeline=json.dumps([])
 
