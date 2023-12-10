@@ -137,7 +137,7 @@ render(R)
 //regular-roll
 elementToScrollTo.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'})
 // image-roll
-var images=document.querySelectorAll('.image-roll'); // has to be here not on top with the others???
+var images=document.querySelectorAll('.image-roll'); // has to be here casue new images show every time!
 images.forEach(function(image) {
 image.addEventListener('load', function() {
 elementToScrollTo.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'})
