@@ -51,9 +51,9 @@ var area=document.getElementById('responseArea')
 
 function timestamp(){var now=new Date();return now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}
 
-function addToChat(dir, body) {
-let chatBubble = document.createElement('div');
-chatBubble.innerHTML = 
+function Bubble(dir,body){
+let x=document.createElement('div');
+x.innerHTML = 
 `<div class="flex items-start md:w-8/12 p-1 pl-4">
     <div class="p-2">
     ${dir === 'req' ?
@@ -65,18 +65,18 @@ chatBubble.innerHTML =
         <p class="pt-2 text-right text-xs text-gray-400">${dir === 'req' ? '@you ' + timestamp() + ' ' : '@marid ' + timestamp() + ' ✓'}</p>
     </div>
 </div>`;
-area.appendChild(chatBubble)}
+area.appendChild(x)}
 
-function renderContent(x) {
+function Engine(x) {
 switch (x.type) {
-case 'text':return `<span>${x.text}</span>`;
-case 'image':return `<img class="image-roll max-w-md rounded-lg" alt="Image" src="${x.image}" />`;
-case 'vstack':return `<div class="flex flex-col justify-center items-center">${x.vstack.map(item => renderContent(item)).join('')}</div>`;
-case 'hstack':return `<div class="flex flex-row justify-center items-center">${x.hstack.map(item => renderContent(item)).join('')}</div>`;
+case 'text':return   `<span>${x.text}</span>`;
+case 'image':return  `<img class="image-roll max-w-md rounded-lg" alt="Image" src="${x.image}" />`;
+case 'vstack':return `<div class="flex flex-col justify-center items-center">${x.vstack.map(item => Engine(item)).join('')}</div>`;
+case 'hstack':return `<div class="flex flex-row justify-center items-center">${x.hstack.map(item => Engine(item)).join('')}</div>`;
 default:return `<span>sorry, couldn't show</span>`}}
 
-function render(items){
-  items.forEach((item)=>{addToChat(item.dir,renderContent(item.body))})}
+function render(y){y.body.forEach((z) => {Bubble(y.dir,Engine(z))})}
+function RENDER(x){x.forEach(render)}
 </script>
 
 <script>
@@ -105,10 +105,7 @@ import pprint
 def send(x,req=True):
  g=[]
  for i in x:
-  if isinstance(i,list):
-   g.extend([Req(j)if req else Res(j) for j in i])
-  else:
-   g.append(Req(i)if req else Res(i))
+  g.append(Req(i)if req else Res(i))
   req=not req
  return g
 
@@ -118,12 +115,12 @@ def play(*args,n=4):
     a=json.dumps(x);timeline=a
 
 def Req(x):
- if(len(x)>1):
+ if isinstance(x,list):
   return {"dir":"req","body":x}
  return {"dir":"req","body":[x]}
 
 def Res(x):
- if(len(x)>1):
+ if isinstance(x,list):
   return {"dir":"res","body":x}
  return {"dir":"res","body":[x]}
 
@@ -143,8 +140,8 @@ ${input.value}
 
 timeline
 `);
-R=JSON.parse(result)
-render(R)
+// R=JSON.parse(result)
+RENDER(JSON.parse(result))
 //regular-roll
 elementToScrollTo.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'})
 // image-roll
