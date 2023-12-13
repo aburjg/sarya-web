@@ -1,1 +1,139 @@
-1+1
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sarya Platfrom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.cdnfonts.com/css/bromny-black" rel="stylesheet" />
+    <style></style>
+  </head>
+
+  <body>
+    <div>
+      <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
+        <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-gray-50 px-6">
+          <div class="mt-5 flex h-16 shrink-0 items-center">
+            <a href="https://sarya.com">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white"><img class="h-9 w-auto" src="https://superchat.sarya.com/img/logo.svg" alt="Your Company" /></div
+            ></a>
+            <p class="opacity-0">.</p>
+            <p class="opacity-0">.</p>
+            <p class="opacity-0">.</p>
+            <a href="https://sarya.com"><img class="h-6" src="https://superchat.sarya.com/img/sarya.svg" alt="sarya" /></a>
+          </div>
+          <nav class="flex flex-1 flex-col">
+            <ul role="list" class="flex flex-1 flex-col gap-y-7">
+              <li>
+                <ul role="list" class="-mx-2 space-y-1">
+                  <li>
+                    <a href="/" class="group flex gap-x-3 rounded-md p-2 text-base font-semibold leading-6 text-gray-700 hover:bg-gray-100">Home</a>
+                  </li>
+                  <li>
+                    <a class="group flex gap-x-3 rounded-lg border p-2 text-base font-semibold leading-6 text-gray-700">Deployments</a>
+                  </li>
+                  <li>
+                    <a href="#" class="group flex gap-x-3 rounded-md p-2 text-base font-semibold leading-6 text-gray-700 hover:bg-gray-100">Plan</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="mb-1 mt-auto">
+                <div class="text-xs font-semibold leading-6 text-gray-400">EXTERNAL LINKS</div>
+                <ul role="list" class="-mx-2 mt-2 space-y-1">
+                  <li>
+                    <a href="https://superchat.sarya.com/" target="_blank" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-500 hover:bg-gray-50 hover:text-purple-800"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-purple-800 group-hover:text-purple-800">⚡️</span> <span class="truncate">Superchat</span></a>
+                  </li>
+                  <li>
+                    <a href="https://docs.sarya.com/" target="_blank" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-500 hover:bg-gray-50 hover:text-purple-800"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-purple-800 group-hover:text-purple-800">📚</span> <span class="truncate">Documentation</span></a>
+                  </li>
+                  <li>
+                    <a href="https://discord.gg/BMnaMatDC7" target="_blank" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-500 hover:bg-gray-50 hover:text-purple-800"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-purple-800 group-hover:text-purple-800">🤖</span> <span class="truncate">Discord</span></a>
+                  </li>
+                  <li>
+                    <a href="https://superchat.sarya.com/playground" target="_blank" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-500 hover:bg-gray-50 hover:text-purple-800"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-purple-800 group-hover:text-purple-800">🛝</span> <span class="truncate">Playground</span></a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Cycls/sarya-py" target="_blank" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-500 hover:bg-gray-50 hover:text-purple-800"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-purple-800 group-hover:text-purple-800">🛠️</span> <span class="truncate">Github</span></a>
+                  </li>
+                </ul>
+              </li>
+              <!-- <div class="text-xs font-semibold leading-6 text-gray-400">PROFILE</div> -->
+              <li class="-mx-6 border-t pt-5">
+                <div class="flex items-center gap-x-4 px-6 pb-3 text-sm font-semibold leading-6 text-purple-900">
+                  <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
+                  <span class="text-base">Mohammed Jamal</span>
+                </div>
+                <a href="#" class="flex justify-end px-10 pb-5 text-sm font-semibold leading-6 text-gray-500 underline"><span>Logout</span></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <main class="flex h-screen flex-row bg-gray-50 text-gray-700 lg:pl-72">
+        <div class="fixed inset-y-0 right-0 w-24 bg-gradient-to-t from-pink-200 via-red-300 to-purple-300 opacity-50"></div>
+        <div class="fixed z-10 h-screen w-screen overflow-y-auto px-4 backdrop-blur-3xl">
+          <div class="lg:w-2/3">
+            <div class="container mx-auto p-4 py-10">
+              <h1 class="font-base text-3xl tracking-tighter opacity-0" style="font-family:'BROmny-Regular';">Hi Mohammed 👋</h1>
+              <p class="opacity-0">.</p>
+              <p class="mt-2 text-lg font-bold">Deployments</p>
+
+              <div class="">
+                <div class="mt-8 flow-root">
+                  <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block w-screen px-6 py-2 align-middle">
+                      <table class="divide-y divide-gray-300 sm:w-screen lg:w-1/2">
+                        <thead>
+                          <tr>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-500 sm:pl-0">NAME</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-500">STATUS</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-500">LINK</th>
+                          </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                          <tr>
+                            <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm sm:pl-0">
+                              <div class="flex items-center">
+                                <div class="h-8 w-8 flex-shrink-0">
+                                  <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
+                                </div>
+                                <div class="ml-4">
+                                  <div class="text-base font-bold text-gray-700">@hello-xyz</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                              <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-sm font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Active</span>
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-5 text-sm font-bold text-gray-600 underline">Superchat/@hello-xyz</td>
+                          </tr>
+                          <tr>
+                            <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm sm:pl-0">
+                              <div class="flex items-center">
+                                <div class="h-8 w-8 flex-shrink-0">
+                                  <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
+                                </div>
+                                <div class="ml-4">
+                                  <div class="text-base font-bold text-gray-700">@stock</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                              <span class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-sm font-medium text-pink-700 ring-1 ring-inset ring-pink-600/20">Inactive</span>
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-5 text-sm font-bold text-gray-600 underline">Superchat/@stock</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
