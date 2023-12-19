@@ -1,213 +1,143 @@
-<link href="https://fonts.cdnfonts.com/css/bromny-black" rel="stylesheet" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sarya</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.cdnfonts.com/css/bromny-black" rel="stylesheet">
+<style>
+</style>
+</head>
+<body>
 
-<div class="flex absolute z-20 w-screen justify-center p-6">
-  <div class="flex w-2/3 items-center rounded-3xl border p-2 py-2 backdrop-blur-lg">
-    <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-purple-100 bg-white bg-opacity-100">
-      <img class="h-8" src="https://mj-cycls.github.io/sarya-web/img/logo.svg" alt="logo" />
+
+<div class="bg-gray-50">
+  <div class="mx-auto w-11/12 bg-gray-50">
+    <header class="fixed inset-x-0 top-0 z-50 mx-auto mt-5 w-11/12 rounded-3xl border backdrop-blur-lg lg:w-2/3">
+      <nav class="flex items-center justify-between p-2 lg:px-3" aria-label="Global">
+        <div class="flex items-center lg:flex-1">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-purple-100 bg-white bg-opacity-100">
+            <img class="h-7" src="https://mj-cycls.github.io/sarya-web/img/logo.svg" alt="logo" />
+          </div>
+          <img class="ml-2 mt-1 h-6" src="https://mj-cycls.github.io/sarya-web/img/sarya.svg" alt="sarya" />
+        </div>
+        <div class="flex gap-x-12">
+          <a href="#" class="hidden text-base font-semibold leading-6 text-gray-900 sm:block">Superchat</a>
+          <a href="#" class="hidden text-base font-semibold leading-6 text-gray-900 sm:block">Docs</a>
+          <a href="#" class="hidden text-base font-semibold leading-6 text-gray-900 sm:block">Pricing</a>
+          <a href="#" class="hidden text-base font-semibold leading-6 text-gray-900 sm:block">Github?</a>
+        </div>
+        <div class="lg:flex lg:flex-1 lg:justify-end">
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">→</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="h-28 bg-gradient-to-r from-pink-200 via-red-300 to-purple-300 opacity-30 blur-2xl"></div>
+
+    <div class="flex justify-center">
+      <div class="relative rounded-full bg-black px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-gray-900/10 hover:ring-gray-900/20 lg:block">
+        Announcing early access to our SDK. <a href="#" class="font-semibold text-purple-300">Sign up <span aria-hidden="true">→</span></a>
+      </div>
     </div>
-    <img class="ml-4 h-7" src="https://mj-cycls.github.io/sarya-web/img/sarya.svg" alt="sarya" />
-    <!-- <div class="text-end font-semibold underline">Superchat Login </div> -->
+
+    <div class="lg:py-30 sm:py-46 mx-auto max-w-2xl py-64 lg:py-52">
+      <div class="text-center">
+        <div class="-mr-6 -mt-14 h-10 w-10 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 lg:hidden"></div>
+        <div class="-mt-52 h-28 w-28 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400 lg:hidden"></div>
+
+        <div class="flex items-center justify-center">
+          <div class="-mr-6 -mt-14 hidden h-10 w-10 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 lg:block"></div>
+          <div class="-mt-52 hidden h-28 w-28 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400 lg:block"></div>
+          <div class="text-right text-5xl tracking-tighter text-gray-600 lg:text-7xl" style="font-family:'BROmny-Regular';">Generative UI<br />for your AI</div>
+        </div>
+
+        <p class="mx-auto py-16 text-lg font-medium leading-8 tracking-wide text-gray-700 lg:text-2xl">Design, publish, share, and monetize <br />customer facing AI apps with Sarya</p>
+
+        <div class="flex items-center justify-center gap-x-6">
+          <a href="#" class="bg-gray- rounded-xl border px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
+          <p href="#" class="text-sm font-semibold leading-6 text-gray-900">Learn more <span aria-hidden="true">↓</span></p>
+        </div>
+      </div>
+
+      <!-- <a></a> -->
+      <div class="py-32">
+        <!-- <b></b> -->
+        <p class="mx-auto text-center text-base font-medium leading-8 text-orange-500">100% AI-DRIVEN EXPERIENCES</p>
+        <p class="mx-auto pb-5 text-center text-3xl font-medium leading-8 text-gray-600">Just focus on your AI app</p>
+        <p class="mx-auto text-center text-xl leading-7 text-gray-600">Sarya introduces a new programming model for designing AI powered UIs</p>
+
+        <pre class="m-5 mb-2 rounded-lg border bg-black p-3 overflow-x-auto">
+<code><span class="text-gray-300">from</span> <span class="text-gray-300">sarya</span> <span class="text-gray-300">import</span> <span class="text-gray-300 ">Sarya</span><span class="text-gray-300">,</span> <span class="text-gray-300">UI</span>
+
+<span class="text-gray-300">sarya</span> <span class="text-gray-300">=</span> <span class="text-gray-300">Sarya</span><span class="text-gray-300">(</span><span class="text-gray-500">"Key"</span><span class="text-gray-300">)</span>
+
+<span class="text-gray-500">@</span><span class="text-gray-300">sarya</span><span class="text-gray-500">.</span><span class="text-gray-300">app</span><span class="text-gray-500">()</span>
+<span class="text-gray-300">def</span> <span class="text-pink-500 ">my_app</span><span class="text-purple-300">():</span>
+  <span class="text-gray-300">return</span> <span class="text-gray-300">UI</span><span class="text-gray-300">.</span><span class="text-gray-300">Image</span><span class="text-gray-300">(</span><span class="text-gray-500">"../desert.png"</span><span class="text-gray-300">)</span>
+
+<span class="text-gray-300">sarya</span><span class="text-gray-500">.</span><span class="text-gray-300">run</span><span class="text-gray-500">()</span></code>
+</pre>
+
+        <p class="mx-auto px-10 pb-10 text-center text-sm leading-7 text-gray-500">Simply make Sarya SDK calls alongside your AI logic, and Sarya will automatically generate UIs in your browser</p>
+        <!-- <b></b> -->
+
+        <div class="mb-10 text-center text-xl text-gray-600">
+          <!-- <div class="mb-16 h-4 w-4 rounded-full bg-gradient-to-r from-gray-300 to-gray-400"> -->
+          ↓
+          <!-- </div> -->
+        </div>
+
+        <div class="flex items-start p-1 pl-4">
+          <div class="p-2">
+            <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
+          </div>
+          <div class="rounded-2xl border border-gray-200 p-2 px-4">
+            <span>Hi 👋, take me to</span> <span class="font-semibold underline">@my-app</span>
+            <p class="pt-2 text-right text-xs text-gray-400">@you 7:28 PM ✓</p>
+          </div>
+        </div>
+
+        <div class="flex items-start p-1 pl-4">
+          <div class="p-2">
+            <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
+          </div>
+          <div class="rounded-2xl border border-gray-200 p-2 px-4">
+            <span>Switched to</span> <span class="font-semibold underline">@my-app</span>
+            <p class="pt-2 text-right text-xs text-gray-400">@my-app 7:28 PM ✓</p>
+          </div>
+        </div>
+
+        <div class="flex items-start p-1 pl-4">
+          <div class="p-2">
+            <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
+          </div>
+          <div class="rounded-2xl border border-gray-200 p-2 px-4">
+            <span>Show me a cool pic 🌅</span>
+            <p class="pt-2 text-right text-xs text-gray-400">@you 7:28 PM ✓</p>
+          </div>
+        </div>
+
+        <div class="flex items-start p-1 pl-4">
+          <div class="p-2">
+            <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
+          </div>
+          <div class="rounded-xl border border-gray-200 p-2 px-2">
+            <img class="w-96 rounded-xl" src="https://www.originaltravel.co.uk/travel-blog/showphoto/3521/0" alt="0" />
+            <p class="pt-2 text-right text-xs text-gray-400">@my-app 7:28 PM ✓</p>
+          </div>
+        </div>
+      </div>
+
+<!--       <img class="w-96 rounded-xl" src="https://docs.sarya.com/assets/images/how-61df372c99bbe066169a97f8c3281b50.png" alt="0" /> -->
+
+      <!-- <a></a> -->
+    </div>
   </div>
 </div>
 
-<div class="flex h-screen justify-center bg-gray-50">
-  <div class="absolute h-28 w-2/3 bg-gradient-to-r from-pink-200 via-red-300 to-purple-300 opacity-30"></div>
-</div>
 
-<div class="flex absolute inset-0 flex-col items-center justify-center overflow-y-auto backdrop-blur-3xl">
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
 
-  <div class="flex items-center justify-center">
-    <div class="rounded-3xl p-5 text-right text-7xl tracking-tighter text-gray-700" style="font-family:'BROmny-Regular';">Generative UI<br />for your AI</div>
-    <div class="ml-8 h-24 w-24 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
-    <div class="mt-12 h-10 w-10 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
-  </div>
-
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-
-  <!-- <div class="flex items-center justify-center border pr-20">
-    <div class="flex h-48 w-32 items-center justify-center border backdrop-blur-xl">
-      your code <br />
-      your data <br />
-      your model <br />
-      your infras
-    </div>
-    <div class="-ml-12 h-24 w-24 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
-  </div> -->
-
-  <!-- <div class="flex items-center justify-center pr-36">
-    <div class="flex h-60 w-48 items-center justify-center backdrop-blur-xl">
-    </div>
-    <div class="-ml-12 h-24 w-24 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
-  </div>
-
-  <div class="flex items-center justify-center pl-36">
-    <div class="h-24 w-24 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400 p-12"></div>
-    <div class="flex -ml-12 h-60 w-48 items-center justify-center text-lg font-semibold text-purple-900 backdrop-blur-xl">
-    </div>
-  </div> -->
-
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-
-  <div class="w-1/2">
-    <div class="flex items-start p-1 pl-4">
-      <div class="p-2">
-        <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
-      </div>
-      <div class="rounded-2xl border border-gray-200 p-2">
-        <p>Hi Sarya!</p>
-        <p>Can you take me to @pic app?</p>
-        <p>Thanks 🙌</p>
-      </div>
-    </div>
-
-    <div class="flex items-start p-1 pl-4">
-      <div class="p-2">
-        <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
-      </div>
-      <div class="rounded-2xl border border-gray-200 p-2 px-4">
-        <p>What's up? How can I help?</p>
-        <p class="pt-2 text-right text-xs text-gray-400">@sarya 7:28 PM ✓</p>
-      </div>
-    </div>
-
-    <div class="flex items-start p-1 pl-4">
-      <div class="p-2">
-        <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
-      </div>
-      <div class="rounded-2xl border border-gray-200 p-2 px-4">
-        <p>Show me a cool pic</p>
-      </div>
-    </div>
-
-    <div class="flex items-start p-1 pl-4">
-      <div class="p-2">
-        <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
-      </div>
-      <div class="rounded-2xl border border-gray-200 p-4 px-4">
-        <img class="w-96 rounded-lg" src="https://www.originaltravel.co.uk/travel-blog/showphoto/3521/0" alt="0" />
-        <p class="pt-2 text-right text-xs text-gray-400">@pic 8:02 PM</p>
-      </div>
-    </div>
-
-    <div class="opacity-0">.</div>
-    <div class="opacity-0">.</div>
-    <div class="opacity-0">.</div>
-    <div class="opacity-0">.</div>
-    <div class="opacity-0">.</div>
-
-    <div class="flex items-center justify-start pr-20">
-      <div class="flex h-48 w-32 items-center justify-center backdrop-blur-xl"></div>
-      <div class="-ml-12 h-24 w-24 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
-    </div>
-
-    <div class="flex items-center justify-start pl-36">
-      <div class="h-24 w-24 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400 p-12"></div>
-      <div class="flex -ml-12 h-60 w-48 items-center justify-center text-lg font-semibold text-purple-900 backdrop-blur-xl"></div>
-    </div>
-
-    <!-- <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-  <div class="opacity-0">.</div>
-
-  <div class="flex items-start p-1 pl-4">
-    <div class="p-2">
-      <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
-    </div>
-    <div class="rounded-2xl border border-gray-200 p-2">
-      <p>Hi Sarya!</p>
-      <p>Can you help me with something?</p>
-      <p>Thanks 🙌</p>
-    </div>
-  </div>
-
-  <div class="flex items-start p-1 pl-4">
-    <div class="p-2">
-      <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
-    </div>
-    <div class="rounded-2xl border border-gray-200 p-2 px-4">
-      <p>What's up? How can I help?</p>
-      <p class="pt-2 text-right text-xs text-gray-400">@sarya 7:28 PM ✓</p>
-    </div>
-  </div>
-
-  <div class="flex items-start p-1 pl-4">
-    <div class="p-2">
-      <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
-    </div>
-    <div class="rounded-2xl border border-gray-200 p-2 px-4">
-      <p>Show me a cool pic</p>
-    </div>
-  </div>
-
-  <div class="flex items-start p-1 pl-4">
-    <div class="p-2">
-      <div class="h-8 w-8 rounded-full bg-gradient-to-r from-yellow-200 to-orange-400"></div>
-    </div>
-    <div class="rounded-2xl border border-gray-200 p-4 px-4">
-      <img class="w-96 rounded-lg" src="https://www.originaltravel.co.uk/travel-blog/showphoto/3521/0" alt="0" />
-      <p class="pt-2 text-right text-xs text-gray-400">@pic 8:02 PM</p>
-    </div>
-  </div> -->
-  </div>
-</div>
+</body>
+</html>
