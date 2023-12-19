@@ -11,7 +11,6 @@
 </head>
 <body>
 
-
 <div class="bg-gray-50">
   <div class="mx-auto w-11/12 bg-gray-50">
     <header class="fixed inset-x-0 top-0 z-50 mx-auto mt-5 w-11/12 rounded-3xl border backdrop-blur-lg lg:w-2/3">
@@ -26,7 +25,7 @@
           <a href="#" class="hidden text-base font-semibold leading-6 text-gray-900 sm:block">Superchat</a>
           <a href="#" class="hidden text-base font-semibold leading-6 text-gray-900 sm:block">Docs</a>
           <a href="#" class="hidden text-base font-semibold leading-6 text-gray-900 sm:block">Pricing</a>
-          <a href="#" class="hidden text-base font-semibold leading-6 text-gray-900 sm:block">Github?</a>
+          <a href="#" class="hidden text-base font-semibold leading-6 text-gray-900 sm:block">Blog</a>
         </div>
         <div class="lg:flex lg:flex-1 lg:justify-end">
           <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">→</span></a>
@@ -66,18 +65,21 @@
         <!-- <b></b> -->
         <p class="mx-auto text-center text-base font-medium leading-8 text-orange-500">100% AI-DRIVEN EXPERIENCES</p>
         <p class="mx-auto pb-5 text-center text-3xl font-medium leading-8 text-gray-600">Just focus on your AI app</p>
-        <p class="mx-auto text-center text-xl leading-7 text-gray-600">Sarya introduces a new programming model for designing AI powered UIs</p>
+        <p class="mx-auto text-center text-xl leading-9 text-gray-600">
+          Sarya introduces a new programming model for<br />
+          designing UIs for AI powered apps
+        </p>
 
-        <pre class="m-5 mb-2 rounded-lg border bg-black p-3 overflow-x-auto">
-<code><span class="text-gray-300">from</span> <span class="text-gray-300">sarya</span> <span class="text-gray-300">import</span> <span class="text-gray-300 ">Sarya</span><span class="text-gray-300">,</span> <span class="text-gray-300">UI</span>
+        <pre class="m-5 mb-2 overflow-x-auto rounded-lg border bg-black p-3">
+<code><span class="text-pink-500">from</span> <span class="text-gray-300">sarya</span> <span class="text-pink-500">import</span> <span class="text-gray-300 ">Sarya</span><span class="text-gray-300">,</span> <span class="text-gray-300">UI</span>
 
-<span class="text-gray-300">sarya</span> <span class="text-gray-300">=</span> <span class="text-gray-300">Sarya</span><span class="text-gray-300">(</span><span class="text-gray-500">"Key"</span><span class="text-gray-300">)</span>
+<span class="text-gray-300">sarya</span> <span class="text-gray-300">=</span> <span class="text-gray-300">Sarya</span><span class="text-gray-300">(</span><span class="text-orange-400">"SECRET_KEY"</span><span class="text-gray-300">)</span>
 
-<span class="text-gray-500">@</span><span class="text-gray-300">sarya</span><span class="text-gray-500">.</span><span class="text-gray-300">app</span><span class="text-gray-500">()</span>
-<span class="text-gray-300">def</span> <span class="text-pink-500 ">my_app</span><span class="text-purple-300">():</span>
-  <span class="text-gray-300">return</span> <span class="text-gray-300">UI</span><span class="text-gray-300">.</span><span class="text-gray-300">Image</span><span class="text-gray-300">(</span><span class="text-gray-500">"../desert.png"</span><span class="text-gray-300">)</span>
+<span class="text-purple-400">@</span><span class="text-purple-400">sarya</span><span class="text-gray-300">.</span><span class="text-gray-300">name</span><span class="text-orange-400"><span class="text-gray-300">(</span>"@my-app"</span><span class="text-gray-300">)</span>
+<span class="text-pink-500">def</span> <span class="text-gray-300 ">g</span><span class="text-gray-300">():</span>
+  <span class="text-pink-500">return</span> <span class="text-gray-300">UI</span><span class="text-gray-300">.</span><span class="text-gray-300">Image</span><span class="text-gray-300">(</span><span class="text-orange-400">"../desert.png"</span><span class="text-gray-300">)</span>
 
-<span class="text-gray-300">sarya</span><span class="text-gray-500">.</span><span class="text-gray-300">run</span><span class="text-gray-500">()</span></code>
+<span class="text-gray-300">sarya</span><span class="text-gray-300">.</span><span class="text-gray-300">run</span><span class="text-gray-300">()</span></code>
 </pre>
 
         <p class="mx-auto px-10 pb-10 text-center text-sm leading-7 text-gray-500">Simply make Sarya SDK calls alongside your AI logic, and Sarya will automatically generate UIs in your browser</p>
@@ -105,7 +107,16 @@
           </div>
           <div class="rounded-2xl border border-gray-200 p-2 px-4">
             <span>Switched to</span> <span class="font-semibold underline">@my-app</span>
-            <p class="pt-2 text-right text-xs text-gray-400">@my-app 7:28 PM ✓</p>
+            <p class="pt-2 text-right text-xs text-gray-400">@sarya 7:28 PM ✓</p>
+          </div>
+        </div>
+
+        <div class="relative mb-1">
+          <div class="absolute inset-0 flex items-center px-24" aria-hidden="true">
+            <div class="w-full border-t border-gray-200"></div>
+          </div>
+          <div class="relative flex justify-center">
+            <span class="bg-gray-50 px-3 py-1 text-sm text-gray-400">@my-app</span>
           </div>
         </div>
 
@@ -130,13 +141,12 @@
         </div>
       </div>
 
-<!--       <img class="w-96 rounded-xl" src="https://docs.sarya.com/assets/images/how-61df372c99bbe066169a97f8c3281b50.png" alt="0" /> -->
+      <!-- <img class="w-96 rounded-xl" src="https://docs.sarya.com/assets/images/how-61df372c99bbe066169a97f8c3281b50.png" alt="0" /> -->
 
       <!-- <a></a> -->
     </div>
   </div>
 </div>
-
 
 
 </body>
