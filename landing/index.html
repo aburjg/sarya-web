@@ -11,6 +11,7 @@
 </head>
 <body>
 
+<link href="https://fonts.cdnfonts.com/css/bromny-black" rel="stylesheet" />
 <div class="bg-gray-50">
   <div class="mx-auto w-11/12 bg-gray-50">
     <header class="fixed inset-x-0 top-0 z-50 mx-auto mt-5 w-11/12 rounded-3xl border backdrop-blur-lg lg:w-2/3">
@@ -60,24 +61,25 @@
       <!-- <a></a> -->
       <div class="pt-52">
         <!-- <b></b> -->
-        <p class="mx-auto text-center text-base font-medium leading-8 text-orange-500">UI-DRIVEN EXPERIENCES EWW</p>
-        <p class="mx-auto pb-5 text-center text-3xl font-medium leading-8 text-gray-600">Just focus on your AI app</p>
+        <p class="mx-auto text-center text-base font-medium leading-8 text-orange-500">BUILD & PUBLISH FAST</p>
+        <p class="mx-auto pb-5 text-center text-3xl font-medium leading-8 text-gray-600">Just focus on your code</p>
         <p class="mx-auto text-center text-xl leading-9 text-gray-600">
           Sarya introduces a new programming<br class="hidden" />
           model for<br class="hidden lg:block" />
           designing UIs for AI powered apps
         </p>
 
-        <pre class="m-3 mb-2 overflow-x-auto rounded-xl border bg-black p-2 px-4">
+        <pre class="m-3 mb-2 overflow-x-auto rounded-lg border bg-black p-2 px-4">
 <code><span class="text-gray-200">pip install sarya</span></code></pre>
 
         <pre class="m-3 mb-2 overflow-x-auto rounded-lg border bg-black p-3">
 <code><span class="text-pink-500">from</span> <span class="text-gray-300">sarya</span> <span class="text-pink-500">import</span> <span class="text-gray-300">Sarya</span><span class="text-gray-300">,</span> <span class="text-gray-300">UI</span>
 
-<span class="text-gray-300">sarya</span> <span class="text-gray-300">=</span> <span class="text-gray-300">Sarya</span><span class="text-gray-300">(</span><span class="text-orange-400">"SECRET_KEY"</span><span class="text-gray-300">)</span>
+<span class="text-gray-300">sarya</span> <span class="text-gray-300">=</span> <span class="text-gray-300">Sarya</span><span class="text-gray-300">(</span><span class="text-orange-400">"SECRET"</span><span class="text-gray-300">)</span>
 
 <span class="text-purple-400">@</span><span class="text-purple-400">sarya</span><span class="text-gray-300">.</span><span class="text-gray-300">name</span><span class="text-orange-400"><span class="text-gray-300">(</span>"@my-app"</span><span class="text-gray-300">)</span>
-<span class="text-pink-500">def</span> <span class="text-gray-300">ai</span><span class="text-gray-300">():</span>
+<span class="text-pink-500">def</span> <span class="text-gray-300">app</span><span class="text-gray-300">():</span>
+  <span class="text-gray-600"># your AI logic</span>
   <span class="text-pink-500">return</span> <span class="text-gray-300">UI</span><span class="text-gray-300">.</span><span class="text-gray-300">Image</span><span class="text-gray-300">(</span><span class="text-orange-400">"desert.png"</span><span class="text-gray-300">)</span>
 
 <span class="text-gray-300">sarya</span><span class="text-gray-300">.</span><span class="text-gray-300">run</span><span class="text-gray-300">()</span></code>
@@ -117,7 +119,7 @@
             <div class="h-8 w-8 rounded-full bg-gradient-to-r from-pink-300 to-purple-400"></div>
           </div>
           <div class="rounded-2xl border border-gray-200 p-2 px-4">
-            <span>Show me a cool pic 🌅</span>
+            <span>Show me a cool picture</span>
             <p class="pt-2 text-right text-xs text-gray-400">@you 7:28 PM ✓</p>
           </div>
         </div>
@@ -132,7 +134,8 @@
         </div>
 
         <div class="flex flex-col items-center">
-          <p class="mb-2 pt-14 text-center text-xl leading-9 text-orange-500">Instantly share with everyone</p>
+          <!-- <p class="mb-2 pt-14 text-center text-xl leading-9 text-orange-500">Instantly share with everyone</p> -->
+          <p class="mx-auto mb-2 pt-14 text-center text-lg font-medium leading-8 text-pink-600">✨ Instantly share with everyone</p>
           <a href="#"> <p class="py-1 text-center text-lg font-bold leading-9 text-gray-800 underline">chat.sarya.com/@my-app</p></a>
         </div>
       </div>
@@ -141,12 +144,12 @@
       <!-- <a></a> -->
     </div>
 
-    <div class="mx-auto bg-transparent py-14 lg:w-2/3">
+    <div class="mx-auto bg-transparent pt-14 lg:w-2/3">
       <div class="mx-auto max-w-7xl rounded-2xl border px-6 py-5 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
-          <h2 class="text-base font-medium leading-7 text-orange-500">AI APP STORE</h2>
+          <h2 class="text-base font-medium leading-7 text-orange-500">ALL-IN-ONE PLATFORM</h2>
           <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">All-in-one UI platform</h2>
-          <p class="mt-6 text-lg leading-8 text-gray-600">Sarya provides more than just a UI library for your AI app. As a Superchat, we manage the entire launching process for you.</p>
+          <p class="mt-6 text-lg leading-8 text-gray-600">Sarya provides more than just a UI library for your AI app. <br />As a publishing platform, we manage the entire launching process for you.</p>
         </div>
         <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <div>
@@ -162,7 +165,7 @@
             <dd class="mt-1 text-gray-600">Instantly share customer-facing AI apps with Sarya for monetization and broader audience reach.</dd>
           </div>
           <div>
-            <dt class="font-semibold text-gray-900">Analytics</dt>
+            <dt class="font-semibold text-gray-900">Data & analytics</dt>
             <dd class="mt-1 text-gray-600">Measure your app's performance and discover insights easily. Use data to understand user trends and finetune your AI for better results.</dd>
           </div>
           <div>
@@ -175,6 +178,11 @@
           </div>
         </dl>
       </div>
+    </div>
+
+    <div class="flex flex-col items-center pb-32 pt-5">
+      <p class="mx-auto mb-2 py-2 pt-14 text-center text-lg font-light leading-8 text-gray-500">Register now for early access</p>
+      <a href="#" class="rounded-xl border bg-black px-3.5 py-2.5 text-sm font-semibold text-gray-200 shadow-sm hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2">Get started</a>
     </div>
   </div>
 </div>
