@@ -77,7 +77,7 @@ if(defaultText) {document.getElementById('userInput').value = defaultText}}
 // Global memory for the chat history
 // var meta={};
 var release=null;
-var appHandler=null;
+var appHandler="home";
 var conversationId=null;
   
 document.getElementById('sendButton').addEventListener('click',sendMessage);
@@ -108,7 +108,11 @@ fetch('https://api.sarya.com/', {
 method:'POST',headers:{"Accept":"application/json","Content-Type":"application/json","x-version":"2023-06","x-language":"en"},
 body:JSON.stringify(requestData),})
 .then(response=>response.json())
-.then(response=>{response.body.forEach(function(entry){addToChat(entry.content,'Other',entry.type);
+.then(response=>{response.body.forEach(
+  // function(entry){addToChat(entry.content,'Other',entry.type);
+  function(entry){addToChat(entry.text,'Other',entry.type);
+
+                  
 });
 // meta=response.meta;
 var release=response.release;
