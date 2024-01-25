@@ -108,16 +108,15 @@ fetch('https://api.sarya.com/', {
 method:'POST',headers:{"Accept":"application/json","Content-Type":"application/json","x-version":"2023-06","x-language":"en"},
 body:JSON.stringify(requestData),})
 .then(response=>response.json())
-.then(response=>{response.body.forEach(
-  // function(entry){addToChat(entry.content,'Other',entry.type);
-  function(entry){addToChat(entry.text,'Other',entry.type);
-
-                  
-});
+.then(response=>{
+release=response.release;appHandler=response.appHandler;conversationId=response.conversationId;
+response.body.forEach(
+// function(entry){addToChat(entry.content,'Other',entry.type);
+function(entry){addToChat(entry.text,'Other',entry.type);});
 // meta=response.meta;
-release=response.release;
-appHandler=response.appHandler;
-conversationId=response.conversationId;
+// release=response.release;
+// appHandler=response.appHandler;
+// conversationId=response.conversationId;
 })
 .catch(error=>{addToChat("Error occurred.",'Error');
 });
