@@ -75,7 +75,11 @@ var defaultText = getQueryParam('text');
 if(defaultText) {document.getElementById('userInput').value = defaultText}}
 
 // Global memory for the chat history
-var memory={};
+// var meta={};
+var release=null;
+var appHandler=null;
+var conversationId=null;
+  
 document.getElementById('sendButton').addEventListener('click',sendMessage);
 
 // Eneter
@@ -90,17 +94,26 @@ document.addEventListener('DOMContentLoaded',function(){document.getElementById(
 function sendMessage(){var userText = document.getElementById('userInput').value;if(!userText.trim()) return; // Don't send empty messages
 // Update UI immediately to show the message being sent
 addToChat(userText,'You');
-var requestData={"dir":"req","body":[{"type":"Text","content":userText}],"meta":memory};
+// var requestData={"dir":"req","body":[{"type":"Text","content":userText}],"meta":memory};
+
+var requestData={/*"dir":"req",*/"body":{"type":"text","text":userText},
+                 "release":release,/*"meta":meta,*/"app_handler":appHandler,"conversation_id":conversationId};
+
 document.getElementById('userInput').value = '';
 
-fetch('https://corsproxy.io/?https://api.sarya.com/', {
+// fetch('https://corsproxy.io/?https://api.sarya.com/', {
+fetch('https://api.sarya.com/', {
+
 
 method:'POST',headers:{"Accept":"application/json","Content-Type":"application/json","x-version":"2023-06","x-language":"en"},
 body:JSON.stringify(requestData),})
 .then(response=>response.json())
 .then(response=>{response.body.forEach(function(entry){addToChat(entry.content,'Other',entry.type);
 });
-memory=response.meta;
+// meta=response.meta;
+var release=response.release;
+var appHandler=response.appHandler;
+var conversationId=response.conversationId;
 })
 .catch(error=>{addToChat("Error occurred.",'Error');
 });
