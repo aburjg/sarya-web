@@ -109,7 +109,7 @@ method:'POST',headers:{"Accept":"application/json","Content-Type":"application/j
 body:JSON.stringify(requestData),})
 .then(response=>response.json())
 .then(response=>{
-release=response.release;appHandler=response.appHandler;conversationId=response.conversationId;
+release=response.release;appHandler=response.app_handler;conversationId=response.conversation_id;
 response.body.forEach(
 // function(entry){addToChat(entry.content,'Other',entry.type);
 function(entry){addToChat(entry.text,'Other',entry.type);});
